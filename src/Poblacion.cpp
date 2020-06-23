@@ -3,7 +3,7 @@
 #include <string.h>
 using namespace std;
 
-Poblacion::Poblacion(string miNombre,string miApellido,string miDistrito,string _sintoma,string _antecedente,int miEdad)
+Poblacion::Poblacion(string miNombre,string miApellido,string miDistrito,string _sintoma,string _antecedente,int miEdad, string _estado)
 {
     nombrePaciente=miNombre;
     apellidoPaciente=miApellido;
@@ -11,6 +11,7 @@ Poblacion::Poblacion(string miNombre,string miApellido,string miDistrito,string 
     sintoma=_sintoma;
     antecedente=_antecedente;
     edad=miEdad;
+    estado=_estado;
 }
 
 void Poblacion::setNombre(string miNombre)
@@ -35,7 +36,7 @@ string Poblacion::getApellido()
 
 string Poblacion::Registro()
 {
-    cout<<"같같Ingresa tu informacion같같"<<endl;
+    cout<<"째째째째Ingresa tu informacion째째째째"<<endl;
     cout<<"Ingresa el nombre del paciente: ";getline(cin,nombrePaciente);
     cout<<"Ingresa el apellido del paciente: ";getline(cin,apellidoPaciente);
     cout<<"Ingresa la edad del paciente: ";cin>>edad; cin.ignore();
@@ -90,6 +91,11 @@ void Poblacion::setAntecedentes(string _antecedente)
     antecedente=_antecedente;
 }
 
+void Poblacion::setEstado(string _estado)
+{
+    estado=_estado;
+}
+
 string Poblacion::getDistrito()
 {
     return distrito;
@@ -103,4 +109,9 @@ string Poblacion::getSintomas()
 string Poblacion::getAntecedente()
 {
     return antecedente;
+}
+
+string Poblacion::getEstado()
+{
+    return estado;
 }
