@@ -60,6 +60,49 @@ string NoVulnerable::mostrarDatos()
 }
 
 
+void NoVulnerable::registro_Paciente()
+{
+    ofstream archivo;
+    archivo.open("Pacientes_NoVulnerables",ios::app|ios::out);
+    if(archivo.fail()){cout<<"No pudo abrirse el archivo"; exit(1);}
+    archivo<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<estado<<endl;
+    archivo.close();
+}
+
+void NoVulnerable::mostrar_Registro()
+{
+    ifstream leerfile;
+    leerfile.open("Pacientes_NoVulnerables",ios::in);
+    if(leerfile.is_open())
+    {
+        cout<<"Registro de pacientes"<<endl;
+        leerfile>>nombrePaciente;
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente;
+            leerfile>>edad;
+            leerfile>>distrito;
+            leerfile>>familia;
+            leerfile>>ocupacion;
+            leerfile>>celular;
+            leerfile>>estado;
+            cout<<"°°°°°°°°°°°°°°°°°°°°°°°"<<endl;
+            cout<<"Estado del paciente: "<<getEstado()<<endl;
+            cout<<"Nombre: "<<getNombre()<<endl;
+            cout<<"Apellido: "<<getApellido()<<endl;
+            cout<<"Edad: "<<getEdad()<<endl;
+            cout<<"Distrito: "<<getDistrito()<<endl;
+            cout<<"Integrantes en la familia: "<<getFamilia()<<endl;
+            cout<<"Ocupacion: "<<getOcupacion()<<endl;
+            cout<<"Numero de celular: "<<getCelular()<<endl;
+            leerfile>>nombrePaciente;
+        }
+        leerfile.close();
+    }else{cout<<"El archivo no pudo abrirse\n";}
+
+}
+
+
 
 
 
