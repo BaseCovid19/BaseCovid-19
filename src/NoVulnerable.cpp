@@ -50,16 +50,6 @@ string NoVulnerable::Registro()
     setFamilia(familia);setOcupacion(ocupacion);setCelular(celular);
 }
 
-string NoVulnerable::mostrarDatos()
-{
-    Poblacion::mostrarDatos();
-    cout<<"Integrantes de la familia: "<<getFamilia()<<endl;
-    cout<<"Ocupacion del paciente: "<<getOcupacion()<<endl;
-    cout<<"Numero de telefono del paciente: "<<getCelular()<<endl;
-    cout<<familia;
-}
-
-
 void NoVulnerable::registro_Paciente()
 {
     ofstream archivo;
@@ -79,13 +69,7 @@ void NoVulnerable::mostrar_Registro()
         leerfile>>nombrePaciente;
         while(!leerfile.eof())
         {
-            leerfile>>apellidoPaciente;
-            leerfile>>edad;
-            leerfile>>distrito;
-            leerfile>>familia;
-            leerfile>>ocupacion;
-            leerfile>>celular;
-            leerfile>>estado;
+            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>estado;
             cout<<"°°°°°°°°°°°°°°°°°°°°°°°"<<endl;
             cout<<"Estado del paciente: "<<getEstado()<<endl;
             cout<<"Nombre: "<<getNombre()<<endl;
@@ -99,7 +83,87 @@ void NoVulnerable::mostrar_Registro()
         }
         leerfile.close();
     }else{cout<<"El archivo no pudo abrirse\n";}
+}
 
+void NoVulnerable::estado_Paciente() // agregando...
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Pacientes_NoVulnerables",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        cout<<"Ingresa el nombre del paciente: ";cin>>nombre_aux;
+        cin.ignore();
+        leerfile>>nombrePaciente; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>estado;
+            if(nombre_aux==nombrePaciente)
+            {
+                encontrado=true;
+                cout<<"Datos del paciente: "<<endl;
+                cout<<"°°°°°°°°°°°°°°°°°°°°°°°"<<endl;
+                cout<<"Estado del paciente: "<<getEstado()<<endl;
+                cout<<"Nombre: "<<getNombre()<<endl;
+                cout<<"Apellido: "<<getApellido()<<endl;
+                cout<<"Edad: "<<getEdad()<<endl;
+                cout<<"Distrito: "<<getDistrito()<<endl;
+                cout<<"Integrantes en la familia: "<<getFamilia()<<endl;
+                cout<<"Ocupacion: "<<getOcupacion()<<endl;
+                cout<<"Numero de celular: "<<getCelular()<<endl;
+                cout<<"°°°°°°°°°°°°°°°°°°°°°°°"<<endl;
+                cout<<"Ingresa el estado en el que se encuentra el paciente: ";getline(cin,estado_aux);
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<estado_aux<<endl;// Una vez leido el nuevo estado, se le asigna el estado al nuevo archivo aux
+                cout<<"El estado del paciente ha cambiado"<<endl;
+            }
+            else{
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+            }
+            leerfile>>nombrePaciente;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+
+    if(encontrado==false)
+    {
+        cout<<"No tenemos pacientes registrados con el nombre ingresado\n";
+    }
+    auxfile.close();
+    leerfile.close();
+    remove("Pacientes_NoVulnerables");
+    rename("Auxfile","Pacientes_NoVulnerables");
+    NoVulnerable::alta_Paciente();
+}
+
+void NoVulnerable::alta_Paciente()
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Pacientes_NoVulnerables",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        leerfile>>nombrePaciente; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>estado;
+            if(estado=="Recuperado")
+            {
+                encontrado=true;
+                cout<<"El paciente fue dado de alta"<<endl;
+            }
+            else{
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+            }
+            leerfile>>nombrePaciente;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+    auxfile.close();
+    leerfile.close();
+    remove("Pacientes_NoVulnerables");
+    rename("Auxfile","Pacientes_NoVulnerables");
 }
 
 
