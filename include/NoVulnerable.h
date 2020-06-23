@@ -24,6 +24,8 @@ class NoVulnerable:public Poblacion
         string getCelular();
         string Registro();
         string mostrarDatos();
+        void registro_Paciente();
+        void mostrar_Registro();
         vector<string>lista={familia,ocupacion,celular};
 };
 
