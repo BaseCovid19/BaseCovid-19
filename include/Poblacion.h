@@ -17,11 +17,12 @@ class Poblacion
        string antecedente;
        int edad;
        string estado;
+       bool encontrado;
+       string nombre_aux,estado_aux;
 
    public:
 
-       Poblacion():nombrePaciente(""),apellidoPaciente(""),distrito(""),sintoma(""),antecedente(""),edad(0),estado("Infectado"){}
-       Poblacion(string,string,string,string,string,int,string);
+       Poblacion();
        void setNombre(string miNombre);
        void setApellido(string miApellido);
        void setEdad(int miEdad);
@@ -40,6 +41,11 @@ class Poblacion
        string AntecedentesMedicos();
        virtual string Registro();
        virtual string mostrarDatos();
+
+       virtual void registro_Paciente();
+       virtual void mostrar_Registro();
+       virtual void estado_Paciente();// modifica el estado del paciente
+       virtual void alta_Paciente();
 
 
 
