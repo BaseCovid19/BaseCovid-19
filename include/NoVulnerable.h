@@ -23,10 +23,10 @@ class NoVulnerable:public Poblacion
         string getOcupacion();
         string getCelular();
         string Registro();
-        string mostrarDatos();
         void registro_Paciente();
         void mostrar_Registro();
-        vector<string>lista={familia,ocupacion,celular};
+        void estado_Paciente();// modifica el estado del paciente
+        void alta_Paciente();
 };
 
 #endif // NOVULNERABLE_H
