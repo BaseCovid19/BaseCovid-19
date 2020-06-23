@@ -20,7 +20,7 @@ class Poblacion
 
    public:
 
-       Poblacion():nombrePaciente(""),apellidoPaciente(""),distrito(""),sintoma(""),antecedente(""),edad(0),estado(""){}
+       Poblacion():nombrePaciente(""),apellidoPaciente(""),distrito(""),sintoma(""),antecedente(""),edad(0),estado("Infectado"){}
        Poblacion(string,string,string,string,string,int,string);
        void setNombre(string miNombre);
        void setApellido(string miApellido);
