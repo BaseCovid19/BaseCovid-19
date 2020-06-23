@@ -16,23 +16,26 @@ class Poblacion
        string sintoma;
        string antecedente;
        int edad;
+       string estado;
 
    public:
 
-       Poblacion():nombrePaciente(""),apellidoPaciente(""),distrito(""),sintoma(""),antecedente(""),edad(0){}
-       Poblacion(string,string,string,string,string,int);
+       Poblacion():nombrePaciente(""),apellidoPaciente(""),distrito(""),sintoma(""),antecedente(""),edad(0),estado(""){}
+       Poblacion(string,string,string,string,string,int,string);
        void setNombre(string miNombre);
        void setApellido(string miApellido);
        void setEdad(int miEdad);
        void setDistrito(string miDistrito);
        void setSintomas(string sintoma);
        void setAntecedentes(string antecedente);
+       void setEstado(string _estado);
        string getNombre();
        string getApellido();
        int getEdad();
        string getDistrito();
        string getSintomas();
        string getAntecedente();
+       string getEstado();
        string Sintomas();
        string AntecedentesMedicos();
        virtual string Registro();
