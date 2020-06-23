@@ -19,6 +19,7 @@ class Vulnerable:public Poblacion
             void registro_Paciente();
             void mostrar_Registro();
             void estado_Paciente();// modifica el estado del paciente
+            void alta_Paciente();
 };
 
 #endif // VULNERABLE_H
