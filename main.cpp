@@ -93,8 +93,20 @@ void menu(){
                 }
                 else if(eleccion==3) // Actualizar el estado del paciente
                 {
-                    vulnerable.estado_Paciente();
-                    return_menu();
+                    cout<<"1.Pacientes vulnerables"<<endl;
+                    cout<<"2.Pacientes no vulnerables"<<endl;
+                    cin>>eleccion;
+                    cin.ignore();
+                    if(eleccion==1)
+                    {
+                        vulnerable.estado_Paciente();
+                        return_menu();
+                    }
+                    else
+                    {
+                        noVulnerable.estado_Paciente();
+                        return_menu();
+                    }
                 }
             }
             else if(eleccion==2){paciente.Sintomas();}
