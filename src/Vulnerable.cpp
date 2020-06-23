@@ -71,7 +71,7 @@ void Vulnerable::estado_Paciente()
     ifstream leerfile;
     bool encontrado=false;
     string nombre_aux,estado_aux;
-    auxfile.open("auxfile.txt",ios::app|ios::out);
+    auxfile.open("Auxfile",ios::app|ios::out);
     leerfile.open("Pacientes_Vulnerables",ios::in);
     if(auxfile.is_open()&&leerfile.is_open())
     {
@@ -110,8 +110,41 @@ void Vulnerable::estado_Paciente()
     }
     auxfile.close();
     leerfile.close();
-    remove("Pacientes_Vulnerables.txt");// se renombra el archivo aux con el original
-    rename("auxfile.txt","Pacientes_Vulnerables.txt");
+    remove("Pacientes_Vulnerables");
+    rename("Auxfile","Pacientes_Vulnerables");
+    alta_Paciente();
+}
+
+void Vulnerable::alta_Paciente()
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    bool encontrado=false;
+    string estado_aux;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Pacientes_Vulnerables",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        leerfile>>nombrePaciente; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente>>edad>>distrito>>estado;
+            if(estado=="Recuperado")
+            {
+                encontrado=true;
+                cout<<"El paciente fue dado de alta"<<endl;
+            }
+            else{
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+            }
+            leerfile>>nombrePaciente;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+    auxfile.close();
+    leerfile.close();
+    remove("Pacientes_Vulnerables");
+    rename("Auxfile","Pacientes_Vulnerables");
 }
 
 
