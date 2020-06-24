@@ -11,10 +11,8 @@ using namespace std;
 void imprimirLista()
 {
     cout<<"1.Datos del paciente"<<endl;
-    cout<<"2.Sintomas"<<endl;
-    cout<<"3.Antecedentes"<<endl;
-    cout<<"4.Personal medico"<<endl;
-    cout<<"5.SALIR"<<endl;
+    cout<<"2.Personal medico"<<endl;
+    cout<<"3.SALIR"<<endl;
 }
 
 void menu();
@@ -97,6 +95,7 @@ void menu(){
                     cout<<"2.Pacientes no vulnerables"<<endl;
                     cin>>eleccion;
                     cin.ignore();
+                    system("cls");
                     if(eleccion==1)
                     {
                         vulnerable.estado_Paciente();
@@ -109,10 +108,8 @@ void menu(){
                     }
                 }
             }
-            else if(eleccion==2){paciente.Sintomas();}
-            else if(eleccion==3){paciente.AntecedentesMedicos();}
-            else if(eleccion==5){return ;}
-        }while(eleccion!=1||eleccion!=2||eleccion!=3||eleccion!=4);
+            else if(eleccion==3){return ;}
+        }while(eleccion!=1||eleccion!=2);
     }
 
 void return_menu()
