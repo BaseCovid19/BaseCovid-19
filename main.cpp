@@ -4,9 +4,17 @@
 #include "Poblacion.h"
 #include "Vulnerable.h"
 #include "NoVulnerable.h"
+#include "Disponibilidad.h"
 #include <stdlib.h>
 #include <fstream>
 using namespace std;
+
+bool acceder(string a="",string b=""){
+    string usuario="MINSA",contrasenia="123456";
+    cout << "Ingrese su nombre de usuario: " << endl;cin>>a;
+    cout << "Ingrese su contrasena: " << endl;cin>>b;
+    return (a==usuario&&b==contrasenia);
+}
 
 void imprimirLista()
 {
@@ -19,6 +27,8 @@ void menu();
 void return_menu();
 int main()
 {
+    acceder();
+    cout<<endl;
     menu();
     return 0;
 }
@@ -27,6 +37,7 @@ void menu(){
     Poblacion paciente;
     Vulnerable vulnerable;
     NoVulnerable noVulnerable;
+    Disponibilidad personal;
         int eleccion;
         string verificacion;
         do
@@ -107,6 +118,10 @@ void menu(){
                         return_menu();
                     }
                 }
+            }
+            else if(eleccion==2){
+                personal.elegirOpcion();
+                return_menu();
             }
             else if(eleccion==3){return ;}
         }while(eleccion!=1||eleccion!=2);

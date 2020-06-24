@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1592975657 source:d:\c++\basecovid-19\src\novulnerable.cpp
+	"NoVulnerable.h"
+	<iostream>
+	<string.h>
+	<vector>
+
+1592975657 d:\c++\basecovid-19\include\novulnerable.h
+	"Poblacion.h"
+	<vector>
+	<iostream>
+	<string.h>
+	<stdlib.h>
+	<fstream>
+
+1592975657 d:\c++\basecovid-19\include\poblacion.h
+	<iostream>
+	<string>
+	<stdlib.h>
+	<fstream>
+
+1592975657 source:d:\c++\basecovid-19\src\poblacion.cpp
+	"Poblacion.h"
+	<iostream>
+	<string.h>
+
+1592977109 source:d:\c++\basecovid-19\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	"Poblacion.h"
+	"Vulnerable.h"
+	"NoVulnerable.h"
+	"Disponibilidad.h"
+	<stdlib.h>
+	<fstream>
+
+1592975657 d:\c++\basecovid-19\include\vulnerable.h
+	"Poblacion.h"
+	<iostream>
+	<string.h>
+	<stdlib.h>
+
+1592976062 d:\c++\basecovid-19\include\disponibilidad.h
+
+1592975657 source:d:\c++\basecovid-19\src\vulnerable.cpp
+	"Vulnerable.h"
+	<iostream>
+	<string.h>
+	<fstream>
+
+1592976184 source:d:\c++\basecovid-19\src\disponibilidad.cpp
+	"Disponibilidad.h"
+	<stdlib.h>
+	<iostream>
+
