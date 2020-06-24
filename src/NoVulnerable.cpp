@@ -55,7 +55,7 @@ void NoVulnerable::registro_Paciente()
     ofstream archivo;
     archivo.open("Pacientes_NoVulnerables",ios::app|ios::out);
     if(archivo.fail()){cout<<"No pudo abrirse el archivo"; exit(1);}
-    archivo<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<estado<<endl;
+    archivo<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;
     archivo.close();
 }
 
@@ -69,7 +69,7 @@ void NoVulnerable::mostrar_Registro()
         leerfile>>nombrePaciente;
         while(!leerfile.eof())
         {
-            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>estado;
+            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>sintoma>>antecedente>>estado;
             cout<<"°°°°°°°°°°°°°°°°°°°°°°°"<<endl;
             cout<<"Estado del paciente: "<<getEstado()<<endl;
             cout<<"Nombre: "<<getNombre()<<endl;
@@ -79,6 +79,8 @@ void NoVulnerable::mostrar_Registro()
             cout<<"Integrantes en la familia: "<<getFamilia()<<endl;
             cout<<"Ocupacion: "<<getOcupacion()<<endl;
             cout<<"Numero de celular: "<<getCelular()<<endl;
+            cout<<"Sintomas: "<<getSintomas()<<endl;
+            cout<<"Antecedentes: "<<getAntecedente()<<endl;
             leerfile>>nombrePaciente;
         }
         leerfile.close();
@@ -98,7 +100,7 @@ void NoVulnerable::estado_Paciente() // agregando...
         leerfile>>nombrePaciente; // lectura adelantada
         while(!leerfile.eof())
         {
-            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>estado;
+            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>sintoma>>antecedente>>estado;
             if(nombre_aux==nombrePaciente)
             {
                 encontrado=true;
@@ -112,13 +114,15 @@ void NoVulnerable::estado_Paciente() // agregando...
                 cout<<"Integrantes en la familia: "<<getFamilia()<<endl;
                 cout<<"Ocupacion: "<<getOcupacion()<<endl;
                 cout<<"Numero de celular: "<<getCelular()<<endl;
+                cout<<"Sintomas: "<<getSintomas()<<endl;
+                cout<<"Antecedentes: "<<getAntecedente()<<endl;
                 cout<<"°°°°°°°°°°°°°°°°°°°°°°°"<<endl;
                 cout<<"Ingresa el estado en el que se encuentra el paciente: ";getline(cin,estado_aux);
-                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<estado_aux<<endl;// Una vez leido el nuevo estado, se le asigna el estado al nuevo archivo aux
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<sintoma<<" "<<antecedente<<" "<<estado_aux<<endl;// Una vez leido el nuevo estado, se le asigna el estado al nuevo archivo aux
                 cout<<"El estado del paciente ha cambiado"<<endl;
             }
             else{
-                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;// Usar el archivo aux con la misma info
             }
             leerfile>>nombrePaciente;
         }
@@ -147,14 +151,14 @@ void NoVulnerable::alta_Paciente()
         leerfile>>nombrePaciente; // lectura adelantada
         while(!leerfile.eof())
         {
-            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>estado;
+            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>sintoma>>antecedente>>estado;
             if(estado=="Recuperado")
             {
                 encontrado=true;
                 cout<<"El paciente fue dado de alta"<<endl;
             }
             else{
-                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;// Usar el archivo aux con la misma info
             }
             leerfile>>nombrePaciente;
         }
