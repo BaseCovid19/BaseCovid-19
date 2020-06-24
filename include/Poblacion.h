@@ -40,12 +40,12 @@ class Poblacion
        string Sintomas();
        string AntecedentesMedicos();
        virtual string Registro();
-       virtual string mostrarDatos();
 
        virtual void registro_Paciente();
        virtual void mostrar_Registro();
        virtual void estado_Paciente();// modifica el estado del paciente
        virtual void alta_Paciente();
+
 
 
 
