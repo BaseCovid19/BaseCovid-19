@@ -31,3 +31,4 @@ class NoVulnerable:public Poblacion
 
 #endif // NOVULNERABLE_H
 
+
