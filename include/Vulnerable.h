@@ -10,7 +10,6 @@ class Vulnerable:public Poblacion
 {
     private:
             string centroMedico;
-            string estado_aux;
     public:
             Vulnerable();
             void setCentroMedico(string);
