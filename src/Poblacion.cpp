@@ -44,17 +44,11 @@ string Poblacion::Registro()
     cout<<"Ingresa el apellido del paciente: ";getline(cin,apellidoPaciente);
     cout<<"Ingresa la edad del paciente: ";cin>>edad; cin.ignore();
     cout<<"Ingresa el distrito del paciente: ";getline(cin,distrito);
-    setNombre(nombrePaciente);setApellido(apellidoPaciente);setEdad(edad);setDistrito(distrito);
+    cout<<"Ingresa los sintomas que presenta el paciente: ";getline(cin,sintoma);
+    cout<<"Ingresa los antecedentes medicos del paciente: ";getline(cin,antecedente);
+    setNombre(nombrePaciente);setApellido(apellidoPaciente);setEdad(edad);setDistrito(distrito);setSintomas(sintoma);setAntecedentes(antecedente);
 }
 
-string Poblacion::mostrarDatos()
-{
-    cout<<"DATOS DEL PACIENTE: \n";
-    cout<<"Nombre: "<<getNombre()<<endl;
-    cout<<"Apellido: "<<getApellido()<<endl;
-    cout<<"Edad: "<<getEdad()<<endl;
-    cout<<"Distrito: "<<getDistrito()<<endl;
-}
 string Poblacion::Sintomas()
 {
     cout<<"Ingresa los sintomas que presenta el paciente: ";getline(cin,sintoma);
@@ -126,7 +120,7 @@ void Poblacion::registro_Paciente()
     ofstream archivo;
     archivo.open("Pacientes_Vulnerables",ios::app|ios::out);
     if(archivo.fail()){cout<<"No pudo abrirse el archivo"; exit(1);}
-    archivo<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<estado<<endl;
+    archivo<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;
     archivo.close();
 }
 
@@ -140,13 +134,15 @@ void Poblacion::mostrar_Registro()
         leerfile>>nombrePaciente;
         while(!leerfile.eof())
         {
-            leerfile>>apellidoPaciente>>edad>>distrito>>estado;
+            leerfile>>apellidoPaciente>>edad>>distrito>>sintoma>>antecedente>>estado;
             cout<<"°°°°°°°°°°°°°°°°°°°°°°°"<<endl;
             cout<<"Estado del paciente: "<<getEstado()<<endl;
             cout<<"Nombre: "<<getNombre()<<endl;
             cout<<"Apellido: "<<getApellido()<<endl;
             cout<<"Edad: "<<getEdad()<<endl;
             cout<<"Distrito: "<<getDistrito()<<endl;
+            cout<<"Sintomas: "<<getSintomas()<<endl;
+            cout<<"Antecedentes: "<<getAntecedente()<<endl;
             leerfile>>nombrePaciente;
         }
         leerfile.close();
@@ -168,7 +164,7 @@ void Poblacion::estado_Paciente()
         leerfile>>nombrePaciente; // lectura adelantada
         while(!leerfile.eof())
         {
-            leerfile>>apellidoPaciente>>edad>>distrito>>estado;
+            leerfile>>apellidoPaciente>>edad>>distrito>>sintoma>>antecedente>>estado;
             if(nombre_aux==nombrePaciente)
             {
                 encontrado=true;
@@ -179,13 +175,15 @@ void Poblacion::estado_Paciente()
                 cout<<"Apellido: "<<getApellido()<<endl;
                 cout<<"Edad: "<<getEdad()<<endl;
                 cout<<"Distrito: "<<getDistrito()<<endl;
+                cout<<"Sintomas: "<<getSintomas()<<endl;
+                cout<<"Antecedentes: "<<getAntecedente()<<endl;
                 cout<<"°°°°°°°°°°°°°°°°°°°°°°°"<<endl;
                 cout<<"Ingresa el estado en el que se encuentra el paciente: ";getline(cin,estado_aux);
-                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<estado_aux<<endl;// Una vez leido el nuevo estado, se le asigna el estado al nuevo archivo aux
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<sintoma<<" "<<antecedente<<" "<<estado_aux<<endl;// Una vez leido el nuevo estado, se le asigna el estado al nuevo archivo aux
                 cout<<"El estado del paciente ha cambiado"<<endl;
             }
             else{
-                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;// Usar el archivo aux con la misma info
             }
             leerfile>>nombrePaciente;
         }
@@ -214,14 +212,14 @@ void Poblacion::alta_Paciente()
         leerfile>>nombrePaciente; // lectura adelantada
         while(!leerfile.eof())
         {
-            leerfile>>apellidoPaciente>>edad>>distrito>>estado;
+            leerfile>>apellidoPaciente>>edad>>distrito>>sintoma>>antecedente>>estado;
             if(estado=="Recuperado")
             {
                 encontrado=true;
                 cout<<"El paciente fue dado de alta"<<endl;
             }
             else{
-                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;// Usar el archivo aux con la misma info
             }
             leerfile>>nombrePaciente;
         }
