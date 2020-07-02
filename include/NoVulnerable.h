@@ -27,6 +27,7 @@ class NoVulnerable:public Poblacion
         void mostrar_Registro();
         void estado_Paciente();// modifica el estado del paciente
         void alta_Paciente();
+        void muerte_Paciente();
 };
 
 #endif // NOVULNERABLE_H
