@@ -13,6 +13,7 @@ bool acceder(string a="",string b=""){
     string usuario="MINSA",contrasenia="123456";
     cout << "Ingrese su nombre de usuario: " << endl;cin>>a;
     cout << "Ingrese su contrasena: " << endl;cin>>b;
+    system("cls");
     return (a==usuario&&b==contrasenia);
 }
 
@@ -27,10 +28,13 @@ void menu();
 void return_menu();
 int main()
 {
-    acceder();
+    if(acceder())
+    {
     cout<<endl;
     menu();
+    }
     return 0;
+
 }
 
 void menu(){
@@ -58,6 +62,7 @@ void menu(){
                 {
                     cout<<"1.Pacientes vulnerables\n";
                     cout<<"2.Pacientes no vulnerables\n";
+                    cout<<"3.Vector de pacientes\n";
                     cin>>eleccion;
                     cin.ignore();
                     system("cls");
@@ -67,6 +72,18 @@ void menu(){
                     }
                     else if(eleccion==2){
                         noVulnerable.mostrar_Registro();
+                        return_menu();
+                    }
+                    else if(eleccion==3)// ESTAS FUNCIONES LAS USÉ PARA IR PROBANDO LOS CONTADORES, PORSIACA ALGO SALÍA MAL Y SE BORRABAN LOS ARCHIVOS
+                    {
+                        vulnerable.vector_nombres();
+                        //vulnerable.crear_contr();
+                        //vulnerable.aumentar_contr();
+                        //vulnerable.crear_contf();
+                        //vulnerable.aumentar_contf();
+                        //vulnerable.crear_contador();
+                        //vulnerable.aumentar_contador();
+                        //vulnerable.reducir_contador();
                         return_menu();
                     }
                 }
@@ -99,6 +116,7 @@ void menu(){
                                 return_menu();
                             }
                     }
+
                 }
                 else if(eleccion==3) // Actualizar el estado del paciente
                 {
