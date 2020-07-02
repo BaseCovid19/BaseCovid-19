@@ -1,6 +1,6 @@
 #ifndef DISPONIBILIDAD_H
 #define DISPONIBILIDAD_H
-
+#include <vector>
 
 class Disponibilidad
 {
