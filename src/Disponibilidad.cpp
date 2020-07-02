@@ -1,6 +1,7 @@
 #include "Disponibilidad.h"
 #include <stdlib.h>
 #include <iostream>
+#include <vector>
 using namespace std;
 
     Disponibilidad::Disponibilidad(){
