@@ -46,7 +46,7 @@ string NoVulnerable::Registro()
     Poblacion::Registro();
     cout<<"Ingresa la ocupacion del paciente: ";getline(cin,ocupacion);
     cout<<"Ingresa el numero de celular: ";getline(cin,celular);
-    cout<<"Ingresa el numero de familiares del paciente: ";getline(cin,familia);
+    cout<<"Ingresa la cantidad de familiares que viven con el paciente: ";getline(cin,familia);
     setFamilia(familia);setOcupacion(ocupacion);setCelular(celular);
 }
 
@@ -57,12 +57,34 @@ void NoVulnerable::registro_Paciente()
     if(archivo.fail()){cout<<"No pudo abrirse el archivo"; exit(1);}
     archivo<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;
     archivo.close();
+    Poblacion::aumentar_contador();
 }
 
 void NoVulnerable::mostrar_Registro()
 {
-    ifstream leerfile;
+    ifstream leerfile,leercont,leercontf,leercontr;
     leerfile.open("Pacientes_NoVulnerables",ios::in);
+    leercont.open("Contador",ios::in);
+    leercontf.open("Contador_Fallecidos",ios::in);
+    leercontr.open("Contador_Recuperados",ios::in);
+    if(leercont.is_open())
+    {
+        leercont>>contadorPacientes;
+        cout<<"Numero de pacientes infectados: "<<contadorPacientes<<endl;
+        leercont.close();
+    }
+    if(leercontf.is_open()) // LEE NUMERO DE FALLECIDOS
+    {
+        leercontf>>contadorFallecidos;
+        cout<<"Numero de fallecidos: "<<contadorFallecidos<<endl;
+        leercontf.close();
+    }
+    if(leercontr.is_open()) // LEE NUMERO DE REGISTRADOS
+    {
+        leercontr>>contadorRecuperados;
+        cout<<"Numero de recuperados: "<<contadorRecuperados<<endl;
+        leercontr.close();
+    }
     if(leerfile.is_open())
     {
         cout<<"Registro de pacientes"<<endl;
@@ -138,6 +160,7 @@ void NoVulnerable::estado_Paciente() // agregando...
     remove("Pacientes_NoVulnerables");
     rename("Auxfile","Pacientes_NoVulnerables");
     NoVulnerable::alta_Paciente();
+    NoVulnerable::muerte_Paciente();
 }
 
 void NoVulnerable::alta_Paciente()
@@ -154,7 +177,7 @@ void NoVulnerable::alta_Paciente()
             leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>sintoma>>antecedente>>estado;
             if(estado=="Recuperado")
             {
-                encontrado=true;
+                alta=true;
                 cout<<"El paciente fue dado de alta"<<endl;
             }
             else{
@@ -168,6 +191,48 @@ void NoVulnerable::alta_Paciente()
     leerfile.close();
     remove("Pacientes_NoVulnerables");
     rename("Auxfile","Pacientes_NoVulnerables");
+
+    if(alta)// alta == true
+    {
+        reducir_contador();
+        aumentar_contr();
+    }
+}
+
+void NoVulnerable::muerte_Paciente()
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Pacientes_NoVulnerables",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        leerfile>>nombrePaciente; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>sintoma>>antecedente>>estado;
+            if(estado=="Fallecido")
+            {
+                muerto=true;
+                cout<<"El paciente ha fallecido"<<endl;
+            }
+            else{
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<familia<<" "<<ocupacion<<" "<<celular<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+            }
+            leerfile>>nombrePaciente;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+    auxfile.close();
+    leerfile.close();
+    remove("Pacientes_NoVulnerables");
+    rename("Auxfile","Pacientes_NoVulnerables");
+
+    if(muerto)
+    {
+        reducir_contador();
+        aumentar_contf();
+    }
 }
 
 
