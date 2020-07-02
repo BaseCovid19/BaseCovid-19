@@ -1,6 +1,8 @@
 #include "Poblacion.h"
 #include <iostream>
 #include <string.h>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 Poblacion::Poblacion()
@@ -15,6 +17,12 @@ Poblacion::Poblacion()
     encontrado=false;
     nombre_aux="";
     estado_aux="";
+    contadorPacientes=0;
+    contadorFallecidos=0;
+    contadorRecuperados=0;
+    alta=false;
+    muerto=false;
+    recuperado=false;
 }
 
 void Poblacion::setNombre(string miNombre)
@@ -26,7 +34,6 @@ void Poblacion::setApellido(string miApellido)
 {
     apellidoPaciente=miApellido;
 }
-
 string Poblacion::getNombre()
 {
     return nombrePaciente;
@@ -113,6 +120,26 @@ string Poblacion::getEstado()
     return estado;
 }
 
+void Poblacion::setContador(int cont)
+{
+    contadorPacientes=cont;
+}
+
+int Poblacion::getContador()
+{
+    return contadorPacientes;
+}
+
+void Poblacion::setContf(int contf)
+{
+    contadorFallecidos=contf;
+}
+
+int Poblacion::getContf()
+{
+    return contadorFallecidos;
+}
+
 /// Manipulacion de registros de la clase Vulnerable
 void Poblacion::registro_Paciente()
 {
@@ -122,12 +149,36 @@ void Poblacion::registro_Paciente()
     if(archivo.fail()){cout<<"No pudo abrirse el archivo"; exit(1);}
     archivo<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;
     archivo.close();
+    aumentar_contador();
 }
 
 void Poblacion::mostrar_Registro()
 {
-    ifstream leerfile;
+    ifstream leerfile, leercont,leercontf,leercontr;
     leerfile.open("Pacientes_Vulnerables",ios::in);
+    leercont.open("Contador",ios::in);
+    leercontf.open("Contador_Fallecidos",ios::in);
+    leercontr.open("Contador_Recuperados",ios::in);
+
+    if(leercont.is_open()) // LEE PACIENTES NUMERO DE PAC. REGISTRADOS
+    {
+        leercont>>contadorPacientes;
+        cout<<"Numero de pacientes infectados: "<<contadorPacientes<<endl;
+        leercont.close();
+    }
+    if(leercontf.is_open()) // LEE NUMERO DE FALLECIDOS
+    {
+        leercontf>>contadorFallecidos;
+        cout<<"Numero de fallecidos: "<<contadorFallecidos<<endl;
+        leercontf.close();
+    }
+
+    if(leercontr.is_open()) // LEE NUMERO DE REGISTRADOS
+    {
+        leercontr>>contadorRecuperados;
+        cout<<"Numero de recuperados: "<<contadorRecuperados<<endl;
+        leercontr.close();
+    }
     if(leerfile.is_open())
     {
         cout<<"Registro de pacientes"<<endl;
@@ -199,6 +250,7 @@ void Poblacion::estado_Paciente()
     remove("Pacientes_Vulnerables");
     rename("Auxfile","Pacientes_Vulnerables");
     alta_Paciente();
+    muerte_Paciente();
 }
 
 void Poblacion::alta_Paciente()
@@ -215,7 +267,7 @@ void Poblacion::alta_Paciente()
             leerfile>>apellidoPaciente>>edad>>distrito>>sintoma>>antecedente>>estado;
             if(estado=="Recuperado")
             {
-                encontrado=true;
+                alta=true;
                 cout<<"El paciente fue dado de alta"<<endl;
             }
             else{
@@ -229,5 +281,218 @@ void Poblacion::alta_Paciente()
     leerfile.close();
     remove("Pacientes_Vulnerables");
     rename("Auxfile","Pacientes_Vulnerables");
+
+    if(alta)// alta == true
+    {
+        reducir_contador();
+        aumentar_contr();
+    }
+}
+
+void Poblacion::muerte_Paciente()
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Pacientes_Vulnerables",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        leerfile>>nombrePaciente; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente>>edad>>distrito>>sintoma>>antecedente>>estado;
+            if(estado=="Fallecido")
+            {
+                muerto=true;
+                cout<<"El paciente ha fallecido"<<endl;
+            }
+            else{
+                auxfile<<nombrePaciente<<" "<<apellidoPaciente<<" "<<edad<<" "<<distrito<<" "<<sintoma<<" "<<antecedente<<" "<<estado<<endl;// Usar el archivo aux con la misma info
+            }
+            leerfile>>nombrePaciente;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+    auxfile.close();
+    leerfile.close();
+    remove("Pacientes_Vulnerables");
+    rename("Auxfile","Pacientes_Vulnerables");
+
+    if(muerto)
+    {
+        reducir_contador();
+        aumentar_contf();
+    }
+}
+
+
+// Se aniade esto a la funcion registro
+
+void Poblacion::vector_nombres()
+{
+    ifstream leerfile;
+    leerfile.open("Pacientes_Vulnerables",ios::in);
+    if(leerfile.is_open())
+    {
+        cout<<"Registro de pacientes"<<endl;
+        leerfile>>nombrePaciente;
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente>>edad>>distrito>>sintoma>>antecedente>>estado;
+            vec.push_back(nombrePaciente);
+            leerfile>>nombrePaciente;
+        }
+        leerfile.close();
+    }else{cout<<"El archivo no pudo abrirse\n";}
+    /*for(unsigned int i=0;i<vec.size();i++)
+    cout<<vec[i]<<" ";*/
+    cout<<"Orden ascendente"<<endl;
+    sort(vec.begin(),vec.end()); // ordenamiento de nombres ascendente
+    for(unsigned int i=0;i<vec.size();i++)
+    {
+        cout<<vec[i]<<" ";
+    }
+    cout<<"\nOrden descendente"<<endl;
+    sort(vec.begin(),vec.end(),greater<string>()); // ordenamiento de nombres descendente
+    for(unsigned int i=0;i<vec.size();i++)
+    {
+        cout<<vec[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+void Poblacion::crear_contador()
+{
+    ofstream contador;
+    contador.open("Contador",ios::app|ios::out);
+    if(contador.fail()){cout<<"No pudo abrirse el archivo"; exit(1);}
+    contador<<contadorPacientes<<endl;
+    contador.close();
+
+    aumentar_contador();
+}
+
+void Poblacion::aumentar_contador()
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Contador",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        leerfile>>contadorPacientes; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            int contadorPacientes_aux=contadorPacientes+1;
+            {
+                auxfile<<contadorPacientes_aux<<endl;
+            }
+            leerfile>>contadorPacientes;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+    auxfile.close();
+    leerfile.close();
+    remove("Contador");
+    rename("Auxfile","Contador");
+}
+
+void Poblacion::reducir_contador()// Infectados
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Contador",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        leerfile>>contadorPacientes; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            int contadorPacientes_aux=contadorPacientes-1;
+            {
+                auxfile<<contadorPacientes_aux<<endl;
+            }
+            leerfile>>contadorPacientes;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+    auxfile.close();
+    leerfile.close();
+    remove("Contador");
+    rename("Auxfile","Contador");
+}
+
+// FUNCIONES PARA CONTADOR DE FALLECIDO
+void Poblacion::crear_contf()
+{
+    ofstream contador;
+    contador.open("Contador_Fallecidos",ios::app|ios::out);
+    if(contador.fail()){cout<<"No pudo abrirse el archivo"; exit(1);}
+    contador<<contadorFallecidos<<endl;
+    contador.close();
+
+    //aumentar_contf();
+}
+
+void Poblacion::aumentar_contf()
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Contador_Fallecidos",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        leerfile>>contadorFallecidos; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            int contadorFallecidos_aux=contadorFallecidos+1;
+            {
+                auxfile<<contadorFallecidos_aux<<endl;
+            }
+            leerfile>>contadorFallecidos;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+    auxfile.close();
+    leerfile.close();
+    remove("Contador_Fallecidos");
+    rename("Auxfile","Contador_Fallecidos");
+}
+
+// CONTADOR DE RECUPERADOS
+void Poblacion::crear_contr()
+{
+    ofstream contador;
+    contador.open("Contador_Recuperados",ios::app|ios::out);
+    if(contador.fail()){cout<<"No pudo abrirse el archivo"; exit(1);}
+    contador<<contadorRecuperados<<endl;
+    contador.close();
+
+}
+
+void Poblacion::aumentar_contr()
+{
+    ofstream auxfile;
+    ifstream leerfile;
+    auxfile.open("Auxfile",ios::app|ios::out);
+    leerfile.open("Contador_Recuperados",ios::in);
+    if(auxfile.is_open()&&leerfile.is_open())
+    {
+        leerfile>>contadorRecuperados; // lectura adelantada
+        while(!leerfile.eof())
+        {
+            int contadorRecuperados_aux=contadorRecuperados+1;
+            {
+                auxfile<<contadorRecuperados_aux<<endl;
+            }
+            leerfile>>contadorRecuperados;
+        }
+    }
+    else{cout<<"El archivo no pudo abrirse\n";}
+    auxfile.close();
+    leerfile.close();
+    remove("Contador_Recuperados");
+    rename("Auxfile","Contador_Recuperados");
 }
 
