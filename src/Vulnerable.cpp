@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 
@@ -26,6 +27,7 @@ string Vulnerable::centroRecomendado()
 {
     cout<<"\nEl paciente debe asistir al Hospital Goyeneche\n";
 }
+
 
 
 
