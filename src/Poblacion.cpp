@@ -7,22 +7,22 @@ using namespace std;
 
 Poblacion::Poblacion()
 {
-    nombrePaciente="";
-    apellidoPaciente="";
-    distrito="";
-    sintoma="";
-    antecedente="";
-    edad=0;
-    estado="Infectado";
-    encontrado=false;
-    nombre_aux="";
-    estado_aux="";
-    contadorPacientes=0;
-    contadorFallecidos=0;
-    contadorRecuperados=0;
-    alta=false;
-    muerto=false;
-    recuperado=false;
+    this->nombrePaciente="";
+    this->apellidoPaciente="";
+    this->distrito="";
+    this->sintoma="";
+    this->antecedente="";
+    this->edad=0;
+    this->estado="Infectado";
+    this->encontrado=false;
+    this->nombre_aux="";
+    this->estado_aux="";
+    this->contadorPacientes=0;
+    this->contadorFallecidos=0;
+    this->contadorRecuperados=0;
+    this->alta=false;
+    this->muerto=false;
+    this->recuperado=false;
 }
 
 void Poblacion::setNombre(string miNombre)
@@ -328,37 +328,76 @@ void Poblacion::muerte_Paciente()
 
 // Se aniade esto a la funcion registro
 
-void Poblacion::vector_nombres()
+void Poblacion::orden_vector(int elec)
 {
     ifstream leerfile;
     leerfile.open("Pacientes_Vulnerables",ios::in);
     if(leerfile.is_open())
     {
-        cout<<"Registro de pacientes"<<endl;
         leerfile>>nombrePaciente;
         while(!leerfile.eof())
         {
             leerfile>>apellidoPaciente>>edad>>distrito>>sintoma>>antecedente>>estado;
-            vec.push_back(nombrePaciente);
+            vecN.push_back(nombrePaciente);
+            vecA.push_back(apellidoPaciente);
             leerfile>>nombrePaciente;
         }
         leerfile.close();
     }else{cout<<"El archivo no pudo abrirse\n";}
-    /*for(unsigned int i=0;i<vec.size();i++)
-    cout<<vec[i]<<" ";*/
-    cout<<"Orden ascendente"<<endl;
-    sort(vec.begin(),vec.end()); // ordenamiento de nombres ascendente
-    for(unsigned int i=0;i<vec.size();i++)
+    int orden=0;
+    if(elec==1)
     {
-        cout<<vec[i]<<" ";
+        cout<<"1. Orden ascendente\n";
+        cout<<"2. Orden descendente\n";
+        cin>>orden;
+        cin.ignore();
+        system("cls");
+        if(orden==1)
+        {
+            cout<<"Orden ascendente\n";
+            sort(vecN.begin(),vecN.end());
+                for(unsigned int i=0;i<vecN.size();i++)
+            {
+                cout<<"Paciente "<<i+1<<": "<<vecN[i]<<endl;
+            }
+        }
+        else if(orden==2)
+        {
+            cout<<"Orden descendente\n";
+            sort(vecN.begin(),vecN.end(),greater<string>()); // ordenamiento de nombres descendente
+            for(unsigned int i=0;i<vecN.size();i++)
+            {
+                cout<<"Paciente "<<i+1<<": "<<vecN[i]<<endl;
+            }
+        }
     }
-    cout<<"\nOrden descendente"<<endl;
-    sort(vec.begin(),vec.end(),greater<string>()); // ordenamiento de nombres descendente
-    for(unsigned int i=0;i<vec.size();i++)
+
+    else if(elec==2)
     {
-        cout<<vec[i]<<" ";
+        cout<<"1. Orden ascendente\n";
+        cout<<"2. Orden descendente\n";
+        cin>>orden;
+        cin.ignore();
+        system("cls");
+        if(orden==1)
+        {
+            cout<<"Orden oscendente\n";
+            sort(vecA.begin(),vecA.end());
+                for(unsigned int i=0;i<vecA.size();i++)
+            {
+                cout<<"Paciente "<<i+1<<": "<<vecA[i]<<endl;
+            }
+        }
+        else if(orden==2)
+        {
+            cout<<"Orden descendente\n";
+            sort(vecA.begin(),vecA.end(),greater<string>()); // ordenamiento de nombres descendente
+            for(unsigned int i=0;i<vecA.size();i++)
+            {
+                cout<<"Paciente "<<i+1<<": "<<vecA[i]<<endl;
+            }
+        }
     }
-    cout<<endl;
 }
 
 
