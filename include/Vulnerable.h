@@ -11,10 +11,13 @@ class Vulnerable:public Poblacion
 {
     private:
             string centroMedico;
+            string direccionCentro;
+            int telefonoCentro;
     public:
             Vulnerable();
-            void setCentroMedico(string);
-            string getCentroMedico();
+            //void setCentroMedico(string);
+            //string getCentroMedico();
+            void imprimirOpciones();
             string centroRecomendado();
 };
 

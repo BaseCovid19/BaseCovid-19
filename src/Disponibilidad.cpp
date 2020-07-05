@@ -22,15 +22,18 @@ using namespace std;
         system("cls");
         switch (eleccion){
             case 1:{
-                cout<< "Personal disponible: 50 personas"<<endl;
+                this->cantidad=50;
+                cout<< "Personal disponible: "<<cantidad"<<endl;
                 break;
             }
             case 2:{
-                cout<< "Personal disponible: 15 personas"<<endl;
+                this->cantidad=15;
+                cout<< "Personal disponible: "<<cantidad"<<endl;
                 break;
             }
             case 3:{
-                cout<< "Personal disponible: 6 personas"<<endl;
+                this->cantidad=6;
+                cout<< "Personal disponible: "<<cantidad"<<endl;
                 break;
             }
             default:{
