@@ -9,7 +9,7 @@ using namespace std;
 Vulnerable::Vulnerable()
 {
    centroMedico="";
-   direccionCentro="":
+   direccionCentro="";
    telefonoCentro=0;
    estado_aux="";
 }
@@ -54,7 +54,7 @@ string Vulnerable::centroRecomendado()
         case 1:{
             this->centroMedico = "MR Cerro Colorado";
             this->direccionCentro = "Avenida Villa Hermosa 320 Urbanizacion La Libertad";
-            this->telefonoCentro = 054250783;
+            this->telefonoCentro = 250783;
             cout<< "El paciente debe ir al Centro Medico: "<<centroMedico<<endl;
             cout<< "La direccion es: "<< direccionCentro<<endl;
             cout<< "Puede llamar al numero: "<<telefonoCentro<<endl;
@@ -63,7 +63,7 @@ string Vulnerable::centroRecomendado()
         case 2:{
             this->centroMedico = "MR Francisco Bolognesi";
             this->direccionCentro = "Calle 20 de abril 204 p.j. Fco. Bolognesi";
-            this->telefonoCentro = 054459180;
+            this->telefonoCentro = 459180;
             cout<< "El paciente debe ir al Centro Medico: "<<centroMedico<<endl;
             cout<< "La direccion es: "<< direccionCentro<<endl;
             cout<< "Puede llamar al numero: "<<telefonoCentro<<endl;

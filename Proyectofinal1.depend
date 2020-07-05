@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1592975657 source:d:\c++\basecovid-19\src\novulnerable.cpp
+1593915077 source:d:\c++\basecovid-19\src\novulnerable.cpp
 	"NoVulnerable.h"
 	<iostream>
 	<string.h>
 	<vector>
 
-1592975657 d:\c++\basecovid-19\include\novulnerable.h
+1593915077 d:\c++\basecovid-19\include\novulnerable.h
 	"Poblacion.h"
 	<vector>
 	<iostream>
@@ -13,18 +13,22 @@
 	<stdlib.h>
 	<fstream>
 
-1592975657 d:\c++\basecovid-19\include\poblacion.h
+1593915077 d:\c++\basecovid-19\include\poblacion.h
+	<vector>
 	<iostream>
 	<string>
 	<stdlib.h>
 	<fstream>
+	<algorithm>
 
-1592975657 source:d:\c++\basecovid-19\src\poblacion.cpp
+1593915077 source:d:\c++\basecovid-19\src\poblacion.cpp
 	"Poblacion.h"
 	<iostream>
 	<string.h>
+	<vector>
+	<algorithm>
 
-1592977109 source:d:\c++\basecovid-19\main.cpp
+1593915077 source:d:\c++\basecovid-19\main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -35,13 +39,15 @@
 	<stdlib.h>
 	<fstream>
 
-1592975657 d:\c++\basecovid-19\include\vulnerable.h
+1593920818 d:\c++\basecovid-19\include\vulnerable.h
 	"Poblacion.h"
 	<iostream>
 	<string.h>
 	<stdlib.h>
+	<vector>
 
-1592976062 d:\c++\basecovid-19\include\disponibilidad.h
+1593915077 d:\c++\basecovid-19\include\disponibilidad.h
+	<vector>
 
 1592975657 source:d:\c++\basecovid-19\src\vulnerable.cpp
 	"Vulnerable.h"
@@ -49,8 +55,9 @@
 	<string.h>
 	<fstream>
 
-1592976184 source:d:\c++\basecovid-19\src\disponibilidad.cpp
+1593920993 source:d:\c++\basecovid-19\src\disponibilidad.cpp
 	"Disponibilidad.h"
 	<stdlib.h>
 	<iostream>
+	<vector>
 

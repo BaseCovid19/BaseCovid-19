@@ -23,17 +23,17 @@ using namespace std;
         switch (eleccion){
             case 1:{
                 this->cantidad=50;
-                cout<< "Personal disponible: "<<cantidad"<<endl;
+                cout<< "Personal disponible: "<<cantidad<<endl;
                 break;
             }
             case 2:{
                 this->cantidad=15;
-                cout<< "Personal disponible: "<<cantidad"<<endl;
+                cout<< "Personal disponible: "<<cantidad<<endl;
                 break;
             }
             case 3:{
                 this->cantidad=6;
-                cout<< "Personal disponible: "<<cantidad"<<endl;
+                cout<< "Personal disponible: "<<cantidad<<endl;
                 break;
             }
             default:{
