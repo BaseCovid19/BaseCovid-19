@@ -6,9 +6,9 @@ using namespace std;
 
 NoVulnerable::NoVulnerable()
 {
-    familia="";
-    ocupacion="";
-    celular="";
+    this->familia="";
+    this->ocupacion="";
+    this->celular="";
 }
 
 void NoVulnerable::setFamilia(string _familia)
@@ -232,6 +232,79 @@ void NoVulnerable::muerte_Paciente()
     {
         reducir_contador();
         aumentar_contf();
+    }
+}
+
+void NoVulnerable::orden_vector(int elec)
+{
+    ifstream leerfile;
+    leerfile.open("Pacientes_NoVulnerables",ios::in);
+    if(leerfile.is_open())
+    {
+
+        leerfile>>nombrePaciente;
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente>>edad>>distrito>>familia>>ocupacion>>celular>>sintoma>>antecedente>>estado;
+            vecN.push_back(nombrePaciente);
+            vecA.push_back(apellidoPaciente);
+            leerfile>>nombrePaciente;
+        }
+        leerfile.close();
+    }else{cout<<"El archivo no pudo abrirse\n";}
+    int orden=0;
+    if(elec==1)
+    {
+        cout<<"1. Orden ascendente\n";
+        cout<<"2. Orden descendente\n";
+        cin>>orden;
+        cin.ignore();
+        system("cls");
+        if(orden==1)
+        {
+            cout<<"Orden ascendente\n";
+            sort(vecN.begin(),vecN.end());
+                for(unsigned int i=0;i<vecN.size();i++)
+            {
+                cout<<"Paciente "<<i+1<<": "<<vecN[i]<<endl;
+            }
+        }
+        else if(orden==2)
+        {
+            cout<<"Orden descendente\n";
+            sort(vecN.begin(),vecN.end(),greater<string>()); // ordenamiento de nombres descendente
+            for(unsigned int i=0;i<vecN.size();i++)
+            {
+                cout<<"Paciente "<<i+1<<": "<<vecN[i]<<endl;
+            }
+        }
+    }
+
+    else if(elec==2)
+    {
+        cout<<"1. Orden ascendente\n";
+        cout<<"2. Orden descendente\n";
+        cin>>orden;
+        cin.ignore();
+        system("cls");
+        if(orden==1)
+        {
+            cout<<"Orden oscendente\n";
+            sort(vecA.begin(),vecA.end());
+                for(unsigned int i=0;i<vecA.size();i++)
+            {
+                cout<<"Paciente "<<i+1<<": "<<vecA[i]<<endl;
+            }
+        }
+        else if(orden==2)
+        {
+            cout<<"Orden descendente\n";
+            sort(vecA.begin(),vecA.end(),greater<string>()); // ordenamiento de nombres descendente
+            for(unsigned int i=0;i<vecA.size();i++)
+            {
+                cout<<"Paciente "<<i+1<<": "<<vecA[i]<<endl;
+            }
+        }
     }
 }
 
