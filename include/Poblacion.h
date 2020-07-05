@@ -21,7 +21,8 @@ class Poblacion
        string estado;
        bool encontrado;
        string nombre_aux,estado_aux;
-       vector<string> vec;
+       vector<string> vecN;
+       vector<string> vecA;
        int contadorPacientes;
        int contadorFallecidos;
        int contadorRecuperados;
@@ -60,7 +61,7 @@ class Poblacion
        virtual void alta_Paciente();
        virtual void muerte_Paciente();
 
-       void vector_nombres();
+       virtual void orden_vector(int);
        void aumentar_contador();
        void crear_contador(); // Cuando pase algun error y se borre el archivo contador
        void reducir_contador();
