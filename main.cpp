@@ -74,17 +74,33 @@ void menu(){
                         noVulnerable.mostrar_Registro();
                         return_menu();
                     }
-                    else if(eleccion==3)// ESTAS FUNCIONES LAS USÉ PARA IR PROBANDO LOS CONTADORES, PORSIACA ALGO SALÍA MAL Y SE BORRABAN LOS ARCHIVOS
+                    else if(eleccion==3)// VECTOR DE NOMBRES Y APELLIDOS
                     {
-                        vulnerable.vector_nombres();
-                        //vulnerable.crear_contr();
-                        //vulnerable.aumentar_contr();
-                        //vulnerable.crear_contf();
-                        //vulnerable.aumentar_contf();
-                        //vulnerable.crear_contador();
-                        //vulnerable.aumentar_contador();
-                        //vulnerable.reducir_contador();
-                        return_menu();
+                        cout<<"1. Pacientes vulnerables\n";
+                        cout<<"2. Pacientes no vulnerables\n";
+                        cin>>eleccion;
+                        cin.ignore();
+                        system("cls");
+                        if(eleccion==1)
+                        {
+                            cout<<"1. Ordenar por nombre\n";
+                            cout<<"2. Ordenar por apellido\n";
+                            cin>>eleccion;
+                            cin.ignore();
+                            system("cls");
+                            vulnerable.orden_vector(eleccion);
+                            return_menu();
+                        }
+                        else if(eleccion==2)
+                        {
+                            cout<<"1. Ordenar por nombre\n";
+                            cout<<"2. Ordenar por apellido\n";
+                            cin>>eleccion;
+                            cin.ignore();
+                            system("cls");
+                            noVulnerable.orden_vector(eleccion);
+                            return_menu();
+                        }
                     }
                 }
                 else if(eleccion==2){
