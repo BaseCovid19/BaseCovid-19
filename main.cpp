@@ -11,8 +11,8 @@ using namespace std;
 
 bool acceder(string a="",string b=""){
     string usuario="MINSA",contrasenia="123456";
-    cout << "Ingrese su nombre de usuario: " << endl;cin>>a;
-    cout << "Ingrese su contrasena: " << endl;cin>>b;
+    cout << "Ingrese su nombre de usuario: " << endl;cin>>a;cin.ignore();
+    cout << "Ingrese su contrasena: " << endl;cin>>b;cin.ignore();
     system("cls");
     return (a==usuario&&b==contrasenia);
 }
@@ -26,12 +26,18 @@ void imprimirLista()
 
 void menu();
 void return_menu();
+Poblacion medico;
+string med;
 int main()
 {
     if(acceder())
     {
-    cout<<endl;
+    cout<<"Nombre del medico: ";
+    getline(cin,med);
+    medico.setMedico(med);
+    system("cls");
     menu();
+
     }
     return 0;
 
@@ -44,6 +50,7 @@ void menu(){
     Disponibilidad personal;
     int eleccion;
     string verificacion;
+    cout<<medico<<endl;
     imprimirLista();
     cin>>eleccion;
     cin.ignore();
@@ -168,4 +175,5 @@ void return_menu()
     system("cls");
     if(volver=="v"){menu();}
 }
+
 
