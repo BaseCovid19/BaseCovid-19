@@ -43,7 +43,7 @@ void menu(){
     NoVulnerable noVulnerable;
     Disponibilidad personal;
         int eleccion;
-        string verificacion;
+        string riesgo;
         do
         {
             imprimirLista();
@@ -104,33 +104,27 @@ void menu(){
                     }
                 }
                 else if(eleccion==2){
-                    cout<<"El paciente tiene mas de 60 anios?   SI/NO \n";
-                    getline(cin,verificacion);
-                    system("cls");
-                    if(verificacion=="SI"||verificacion=="Si"||verificacion=="si")
+
+                            cout<<"El paciente presenta alguno de los siguientes factores de riesgo?\n";
+                            cout<<"Embarazo, Enfermedad cardiovacular, Diabetes, Enfermedad hepatica\n";
+                            cout<<"Enfermedad cronica neurologica o neuromuscular, Pos parto, Enfermedad renal\n";
+                            cout<<"Inmunodeficiencia,Cancer, Enfermedad pulmonar cronica, Es mayor de 60 anios\n";
+                            getline(cin,riesgo);
+                            system("cls");
+
+                    if(riesgo=="SI"||riesgo=="Si"||riesgo=="si")
                     {
                             vulnerable.Registro();
-                            if(vulnerable.getEdad()<60){
-                                    cout<<"Edad incorrecta, vuelva a ingresar\n";
-                                return_menu();
-                            }
-                            else{
-                                vulnerable.registro_Paciente();
-                                vulnerable.centroRecomendado();
-                                return_menu();}
+                            vulnerable.registro_Paciente();
+                            vulnerable.centroRecomendado();
+                            return_menu();
 
                     }
-                    else if(verificacion=="NO"||verificacion=="No"||verificacion=="no")
+                    else if((riesgo=="NO"||riesgo=="No"||riesgo=="no"))
                     {
                             noVulnerable.Registro();
-                            if(noVulnerable.getEdad()>60){
-                                cout<<"Edad incorrecta, vuelva a ingresar\n";
-                                return_menu();
-                            }
-                            else{
-                                noVulnerable.registro_Paciente();
-                                return_menu();
-                            }
+                            noVulnerable.registro_Paciente();
+                            return_menu();
                     }
 
                 }
