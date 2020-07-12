@@ -13,17 +13,17 @@ NoVulnerable::NoVulnerable()
 
 void NoVulnerable::setFamilia(string _familia)
 {
-    familia=_familia;
+    this->familia=_familia;
 }
 
 void NoVulnerable::setOcupacion(string _ocupacion)
 {
-    ocupacion=_ocupacion;
+    this->ocupacion=_ocupacion;
 }
 
 void NoVulnerable::setCelular(string _celular)
 {
-    celular=_celular;
+    this->celular=_celular;
 }
 
 string NoVulnerable::getFamilia()
