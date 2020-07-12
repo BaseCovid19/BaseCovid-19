@@ -42,118 +42,124 @@ void menu(){
     Vulnerable vulnerable;
     NoVulnerable noVulnerable;
     Disponibilidad personal;
-        int eleccion;
-        string riesgo;
-        do
-        {
-            imprimirLista();
-            cin>>eleccion;
+    int eleccion;
+    string verificacion;
+    imprimirLista();
+    cin>>eleccion;
+    cin.ignore();
+    system("cls");
+    switch (eleccion){
+        case 1:{
+            cout<<"1.Mostrar pacientes registrados\n";
+            cout<<"2.Registrar paciente\n";
+            cout<<"3.Actualizar estado de los pacientes\n";
+            int eleccion1;
+            cin>>eleccion1;
             cin.ignore();
             system("cls");
-            if(eleccion==1)
-            {
-                cout<<"1.Mostrar pacientes registrados\n";
-                cout<<"2.Resgistrar paciente\n";
-                cout<<"3.Actualizar estado de los pacientes\n";
-                cin>>eleccion;
-                cin.ignore();
-                system("cls");
-                if(eleccion==1)
-                {
+            switch (eleccion1){
+                case 1:{
                     cout<<"1.Pacientes vulnerables\n";
                     cout<<"2.Pacientes no vulnerables\n";
                     cout<<"3.Vector de pacientes\n";
-                    cin>>eleccion;
+                    int eleccion2;
+                    cin>>eleccion2;
                     cin.ignore();
                     system("cls");
-                    if(eleccion==1){
-                        vulnerable.mostrar_Registro();
-                        return_menu();
-                    }
-                    else if(eleccion==2){
-                        noVulnerable.mostrar_Registro();
-                        return_menu();
-                    }
-                    else if(eleccion==3)// VECTOR DE NOMBRES Y APELLIDOS
-                    {
-                        cout<<"1. Pacientes vulnerables\n";
-                        cout<<"2. Pacientes no vulnerables\n";
-                        cin>>eleccion;
-                        cin.ignore();
-                        system("cls");
-                        if(eleccion==1)
-                        {
-                            cout<<"1. Ordenar por nombre\n";
-                            cout<<"2. Ordenar por apellido\n";
-                            cin>>eleccion;
-                            cin.ignore();
-                            system("cls");
-                            vulnerable.orden_vector(eleccion);
+                    switch (eleccion2){
+                        case 1:{
+                            vulnerable.mostrar_Registro();
                             return_menu();
                         }
-                        else if(eleccion==2)
-                        {
-                            cout<<"1. Ordenar por nombre\n";
-                            cout<<"2. Ordenar por apellido\n";
-                            cin>>eleccion;
+                        case 2:{
+                            noVulnerable.mostrar_Registro();
+                            return_menu();
+                        }
+                        case 3:{// VECTOR DE NOMBRES Y APELLIDOS
+                            cout<<"1. Pacientes vulnerables\n";
+                            cout<<"2. Pacientes no vulnerables\n";
+                            int eleccion3;
+                            cin>>eleccion3;
                             cin.ignore();
                             system("cls");
-                            noVulnerable.orden_vector(eleccion);
-                            return_menu();
+                            switch (eleccion3){
+                                case 1:{
+                                    cout<<"1. Ordenar por nombre\n";
+                                    cout<<"2. Ordenar por apellido\n";
+                                    int eleccion4;
+                                    cin>>eleccion4;
+                                    cin.ignore();
+                                    system("cls");
+                                    vulnerable.orden_vector(eleccion4);
+                                    return_menu();
+                                }
+                                case 2:{
+                                    cout<<"1. Ordenar por nombre\n";
+                                    cout<<"2. Ordenar por apellido\n";
+                                    int eleccion5;
+                                    cin>>eleccion5;
+                                    cin.ignore();
+                                    system("cls");
+                                    noVulnerable.orden_vector(eleccion5);
+                                    return_menu();
+                                }
+                            }
                         }
                     }
                 }
-                else if(eleccion==2){
-
-                            cout<<"El paciente presenta alguno de los siguientes factores de riesgo?\n";
-                            cout<<"Embarazo, Enfermedad cardiovacular, Diabetes, Enfermedad hepatica\n";
-                            cout<<"Enfermedad cronica neurologica o neuromuscular, Pos parto, Enfermedad renal\n";
-                            cout<<"Inmunodeficiencia,Cancer, Enfermedad pulmonar cronica, Es mayor de 60 anios\n";
-                            getline(cin,riesgo);
-                            system("cls");
-
-                    if(riesgo=="SI"||riesgo=="Si"||riesgo=="si")
-                    {
+                case 2:{
+                    cout<<"El paciente presenta alguno de los siguientes factores de riesgo?\n";
+                    cout<<"Embarazo, Enfermedad cardiovacular, Diabetes, Enfermedad hepatica\n";
+                    cout<<"Enfermedad cronica neurologica o neuromuscular, Pos parto, Enfermedad renal\n";
+                    cout<<"Inmunodeficiencia,Cancer, Enfermedad pulmonar cronica, Es mayor de 60 anios\n";
+                    string riesgo;
+                    getline(cin,riesgo);
+                    system("cls");
+                    if(riesgo=="SI"||riesgo=="Si"||riesgo=="si"){
                             vulnerable.Registro();
                             vulnerable.registro_Paciente();
                             vulnerable.centroRecomendado();
                             return_menu();
-
                     }
-                    else if((riesgo=="NO"||riesgo=="No"||riesgo=="no"))
-                    {
+                    else if((riesgo=="NO"||riesgo=="No"||riesgo=="no")){
                             noVulnerable.Registro();
                             noVulnerable.registro_Paciente();
                             return_menu();
                     }
 
                 }
-                else if(eleccion==3) // Actualizar el estado del paciente
-                {
+                case 3:{ // Actualizar el estado del paciente
                     cout<<"1.Pacientes vulnerables"<<endl;
                     cout<<"2.Pacientes no vulnerables"<<endl;
-                    cin>>eleccion;
+                    int eleccion6;
+                    cin>>eleccion6;
                     cin.ignore();
                     system("cls");
-                    if(eleccion==1)
-                    {
-                        vulnerable.estado_Paciente();
-                        return_menu();
-                    }
-                    else
-                    {
-                        noVulnerable.estado_Paciente();
-                        return_menu();
+                    switch (eleccion6){
+                        case 1:{
+                            vulnerable.estado_Paciente();
+                            return_menu();
+                        }
+                        case 2:{
+                            noVulnerable.estado_Paciente();
+                            return_menu();
+                        }
                     }
                 }
             }
-            else if(eleccion==2){
-                personal.elegirOpcion();
-                return_menu();
-            }
-            else if(eleccion==3){return ;}
-        }while(eleccion!=1||eleccion!=2);
+        }
+        case 2:{
+            personal.elegirOpcion();
+            return_menu();
+        }
+        case 3:{
+            return ;
+        }
+        default:{
+                cout<<"No hay esa opcion"<<endl;
+        }
     }
+}
 
 void return_menu()
 {

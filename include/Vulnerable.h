@@ -15,8 +15,6 @@ class Vulnerable:public Poblacion
             int telefonoCentro;
     public:
             Vulnerable();
-            //void setCentroMedico(string);
-            //string getCentroMedico();
             void imprimirOpciones();
             string centroRecomendado();
 };
