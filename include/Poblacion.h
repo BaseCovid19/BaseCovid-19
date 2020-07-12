@@ -29,6 +29,7 @@ class Poblacion
        bool alta;
        bool muerto;
        bool recuperado;
+       string medicoEncargado;
 
    public:
 
@@ -42,8 +43,10 @@ class Poblacion
        void setEstado(string _estado);
        void setContador(int cont);
        void setContf(int contf);
+       void setMedico(string med);
        string getNombre();
        string getApellido();
+       string getMedico();
        int getEdad();
        string getDistrito();
        string getSintomas();
@@ -72,6 +75,7 @@ class Poblacion
        void crear_contr();
        void aumentar_contr();
 
+       friend ostream& operator<<(ostream &output, const Poblacion &o);
 
 
 };
