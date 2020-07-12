@@ -23,16 +23,17 @@ Poblacion::Poblacion()
     this->alta=false;
     this->muerto=false;
     this->recuperado=false;
+    this->medicoEncargado="";
 }
 
 void Poblacion::setNombre(string miNombre)
 {
-    nombrePaciente=miNombre;
+    this->nombrePaciente=miNombre;
 }
 
 void Poblacion::setApellido(string miApellido)
 {
-    apellidoPaciente=miApellido;
+    this->apellidoPaciente=miApellido;
 }
 string Poblacion::getNombre()
 {
@@ -72,12 +73,12 @@ string Poblacion::AntecedentesMedicos()
 
 void Poblacion::setSintomas(string _sintoma)
 {
-    sintoma=_sintoma;
+    this->sintoma=_sintoma;
 }
 
 void Poblacion::setEdad(int miEdad)
 {
-    edad=miEdad;
+    this->edad=miEdad;
 }
 
 int Poblacion::getEdad()
@@ -87,19 +88,28 @@ int Poblacion::getEdad()
 
 void Poblacion::setDistrito(string miDistrito)
 {
-    distrito=miDistrito;
+    this->distrito=miDistrito;
 }
 
 void Poblacion::setAntecedentes(string _antecedente)
 {
-    antecedente=_antecedente;
+    this->antecedente=_antecedente;
 }
 
 void Poblacion::setEstado(string _estado)
 {
-    estado=_estado;
+    this->estado=_estado;
 }
 
+void Poblacion::setMedico(string med)
+{
+    this->medicoEncargado=med;
+}
+
+string Poblacion::getMedico()
+{
+    return medicoEncargado;
+}
 string Poblacion::getDistrito()
 {
     return distrito;
@@ -122,7 +132,7 @@ string Poblacion::getEstado()
 
 void Poblacion::setContador(int cont)
 {
-    contadorPacientes=cont;
+    this->contadorPacientes=cont;
 }
 
 int Poblacion::getContador()
@@ -132,7 +142,7 @@ int Poblacion::getContador()
 
 void Poblacion::setContf(int contf)
 {
-    contadorFallecidos=contf;
+    this->contadorFallecidos=contf;
 }
 
 int Poblacion::getContf()
@@ -534,4 +544,10 @@ void Poblacion::aumentar_contr()
     remove("Contador_Recuperados");
     rename("Auxfile","Contador_Recuperados");
 }
+
+ostream& operator<<(ostream &output, const Poblacion &o) {
+    output << "Nombre del medico que ha ingresado a la base: " << o.medicoEncargado; // Prueba de sobrecarga
+    return output;
+}
+
 
