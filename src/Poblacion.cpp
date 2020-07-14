@@ -410,6 +410,50 @@ void Poblacion::orden_vector(int elec)
     }
 }
 
+void Poblacion::buscar(int elec) //CORREGIR
+{
+    ifstream leerfile;
+    leerfile.open("Pacientes_Vulnerables",ios::in);
+    if(leerfile.is_open())
+    {
+        leerfile>>nombrePaciente;
+        while(!leerfile.eof())
+        {
+            leerfile>>apellidoPaciente>>edad>>distrito>>sintoma>>antecedente>>estado;
+            vecN.push_back(nombrePaciente);
+            vecA.push_back(apellidoPaciente);
+            leerfile>>nombrePaciente;
+        }
+        leerfile.close();
+    }else{cout<<"El archivo no pudo abrirse\n";}
+    int orden=0;
+    if(elec==1)
+    {
+        string aBuscar;
+        getline(cin,aBuscar);
+        size_t foundLast;
+        for (unsigned int i=0;i<vecN.size();i++){
+            foundLast =vecN[i].find(aBuscar);
+            if (foundLast<1000){
+                cout<< "Paciente: "<< vecN[i] << " " << vecA[i];
+            }
+        }
+    }
+    if(elec==2)
+    {
+        string aBuscar;
+        getline(cin,aBuscar);
+        size_t foundLast;
+        for (unsigned int i=0;i<vecA.size();i++){
+            foundLast =vecA[i].find(aBuscar);
+            if (foundLast<1000){
+                cout<< "Paciente: "<< vecA[i] << " " << vecN[i];
+            }
+        }
+    }
+}
+
+
 
 void Poblacion::crear_contador()
 {

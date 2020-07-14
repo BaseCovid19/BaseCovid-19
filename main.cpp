@@ -69,6 +69,7 @@ void menu(){
                     cout<<"1.Pacientes vulnerables\n";
                     cout<<"2.Pacientes no vulnerables\n";
                     cout<<"3.Vector de pacientes\n";
+                    cout<<"4.Busqueda de pacientes\n";
                     int eleccion2;
                     cin>>eleccion2;
                     cin.ignore();
@@ -108,6 +109,36 @@ void menu(){
                                     cin.ignore();
                                     system("cls");
                                     noVulnerable.orden_vector(eleccion5);
+                                    return_menu();
+                                }
+                            }
+                        }
+                        case 4:{// VECTOR DE NOMBRES Y APELLIDOS
+                            cout<<"1. Pacientes vulnerables\n";
+                            cout<<"2. Pacientes no vulnerables\n";
+                            int eleccion7;
+                            cin>>eleccion7;
+                            cin.ignore();
+                            system("cls");
+                            switch (eleccion7){
+                                case 1:{
+                                    cout<<"1. Ordenar por nombre\n";
+                                    cout<<"2. Ordenar por apellido\n";
+                                    int eleccion8;
+                                    cin>>eleccion8;
+                                    cin.ignore();
+                                    system("cls");
+                                    vulnerable.buscar(eleccion8);
+                                    return_menu();
+                                }
+                                case 2:{
+                                    cout<<"1. Ordenar por nombre\n";
+                                    cout<<"2. Ordenar por apellido\n";
+                                    int eleccion9;
+                                    cin>>eleccion9;
+                                    cin.ignore();
+                                    system("cls");
+                                    noVulnerable.buscar(eleccion9);
                                     return_menu();
                                 }
                             }

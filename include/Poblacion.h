@@ -65,6 +65,7 @@ class Poblacion
        virtual void muerte_Paciente();
 
        virtual void orden_vector(int);
+       virtual void buscar(int);
        void aumentar_contador();
        void crear_contador(); // Cuando pase algun error y se borre el archivo contador
        void reducir_contador();
