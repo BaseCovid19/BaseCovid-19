@@ -54,8 +54,6 @@ class Poblacion
        string getEstado();
        int getContador();
        int getContf();
-       string Sintomas();
-       string AntecedentesMedicos();
        virtual string Registro();
 
        virtual void registro_Paciente();
