@@ -69,4 +69,73 @@
 
 1594786546 c:\users\sebastian paz\ccomp0104\proyectofinal1\include\mapaaqp.h
 
+1594792883 source:d:\c++\basecovid-19\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	"Poblacion.h"
+	"Vulnerable.h"
+	"NoVulnerable.h"
+	"Disponibilidad.h"
+	<stdlib.h>
+	<fstream>
+	"MapaAQP.h"
+
+1594792883 d:\c++\basecovid-19\include\poblacion.h
+	<vector>
+	<iostream>
+	<string>
+	<stdlib.h>
+	<fstream>
+	<algorithm>
+
+1594792883 d:\c++\basecovid-19\include\vulnerable.h
+	"Poblacion.h"
+	<iostream>
+	<string.h>
+	<stdlib.h>
+	<vector>
+
+1594792883 d:\c++\basecovid-19\include\novulnerable.h
+	"Poblacion.h"
+	<vector>
+	<iostream>
+	<string.h>
+	<stdlib.h>
+	<fstream>
+
+1594792883 d:\c++\basecovid-19\include\disponibilidad.h
+	<vector>
+
+1594792883 d:\c++\basecovid-19\include\mapaaqp.h
+
+1594792883 source:d:\c++\basecovid-19\src\disponibilidad.cpp
+	"Disponibilidad.h"
+	<stdlib.h>
+	<iostream>
+	<vector>
+
+1594792883 source:d:\c++\basecovid-19\src\mapaaqp.cpp
+	"MapaAQP.h"
+	<allegro.h>
+
+1594792883 source:d:\c++\basecovid-19\src\novulnerable.cpp
+	"NoVulnerable.h"
+	<iostream>
+	<string.h>
+	<vector>
+
+1594792883 source:d:\c++\basecovid-19\src\vulnerable.cpp
+	"Vulnerable.h"
+	<iostream>
+	<string.h>
+	<fstream>
+	<vector>
+
+1594794611 source:d:\c++\basecovid-19\src\poblacion.cpp
+	"Poblacion.h"
+	<iostream>
+	<string.h>
+	<vector>
+	<algorithm>
 

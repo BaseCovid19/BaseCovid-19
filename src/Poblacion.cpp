@@ -415,25 +415,27 @@ void Poblacion::buscar(int elec) //CORREGIR
     int orden=0;
     if(elec==1)
     {
-        string aBuscar;
-        getline(cin,aBuscar);
-        size_t foundLast;
-        for (unsigned int i=0;i<vecN.size();i++){
-            foundLast =vecN[i].find(aBuscar);
-            if (foundLast<1000){
-                cout<< "Paciente: "<< vecN[i] << " " << vecA[i];
+        string buscando;
+        cout<<"Ingrese su busqueda: "<<endl;
+        getline(cin,buscando);
+        size_t found;
+        for (size_t i=0;i<vecN.size();i++){
+            found =vecN[i].find(buscando);
+            if (found!=string::npos){
+                cout<< "Paciente: "<< vecN[i] << " " << vecA[i] << endl;
             }
         }
     }
     if(elec==2)
     {
         string aBuscar;
+        cout<<"Ingrese su busqueda: "<<endl;
         getline(cin,aBuscar);
         size_t foundLast;
-        for (unsigned int i=0;i<vecA.size();i++){
+        for (size_t i=0;i<vecA.size();i++){
             foundLast =vecA[i].find(aBuscar);
-            if (foundLast<1000){
-                cout<< "Paciente: "<< vecA[i] << " " << vecN[i];
+            if (foundLast!=string::npos){
+                cout<< "Paciente: "<< vecA[i] << " " << vecN[i] << endl;
             }
         }
     }
