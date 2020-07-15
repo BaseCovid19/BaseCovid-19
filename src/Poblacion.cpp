@@ -57,20 +57,6 @@ string Poblacion::Registro()
     setNombre(nombrePaciente);setApellido(apellidoPaciente);setEdad(edad);setDistrito(distrito);setSintomas(sintoma);setAntecedentes(antecedente);
 }
 
-string Poblacion::Sintomas()
-{
-    cout<<"Ingresa los sintomas que presenta el paciente: ";getline(cin,sintoma);
-    setSintomas(sintoma);
-    cout<<"Los sintomas que presenta el paciente son: "<<getSintomas()<<endl;
-}
-
-string Poblacion::AntecedentesMedicos()
-{
-    cout<<"Ingresa los antecedentes medicos del paciente: ";getline(cin,antecedente);
-    setAntecedentes(antecedente);
-    cout<<"Los antecedentes medicos del paciente son: "<<getAntecedente()<<endl;
-}
-
 void Poblacion::setSintomas(string _sintoma)
 {
     this->sintoma=_sintoma;
