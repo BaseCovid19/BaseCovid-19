@@ -7,6 +7,8 @@
 #include "Disponibilidad.h"
 #include <stdlib.h>
 #include <fstream>
+//#include <allegro.h>
+#include "MapaAQP.h"
 using namespace std;
 
 bool acceder(string a="",string b=""){
@@ -40,9 +42,20 @@ int main()
 
     }
     return 0;
+    /*while(!key[KEY_ESC])
+        {
+        MapaAQP m;
+        m.init();
+        BITMAP *mapa;
+        mapa = load_bitmap("Arequipa_provincia_mapa.bmp", NULL);
+        draw_sprite(screen,mapa,0,0);
+
+        readkey();
+        m.deinit();
+        }*/
 
 }
-
+//END_OF_MAIN()
 void menu(){
     Poblacion paciente;
     Vulnerable vulnerable;
