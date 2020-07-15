@@ -1,34 +1,5 @@
 # depslib dependency file v1.0
-1594602694 source:d:\c++\basecovid-19\src\novulnerable.cpp
-	"NoVulnerable.h"
-	<iostream>
-	<string.h>
-	<vector>
-
-1594602694 d:\c++\basecovid-19\include\novulnerable.h
-	"Poblacion.h"
-	<vector>
-	<iostream>
-	<string.h>
-	<stdlib.h>
-	<fstream>
-
-1594640406 d:\c++\basecovid-19\include\poblacion.h
-	<vector>
-	<iostream>
-	<string>
-	<stdlib.h>
-	<fstream>
-	<algorithm>
-
-1594640508 source:d:\c++\basecovid-19\src\poblacion.cpp
-	"Poblacion.h"
-	<iostream>
-	<string.h>
-	<vector>
-	<algorithm>
-
-1594640164 source:d:\c++\basecovid-19\main.cpp
+1594788161 source:c:\users\sebastian paz\ccomp0104\proyectofinal1\main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -38,27 +9,64 @@
 	"Disponibilidad.h"
 	<stdlib.h>
 	<fstream>
+	"MapaAQP.h"
 
-1594602694 d:\c++\basecovid-19\include\vulnerable.h
+1594788161 c:\users\sebastian paz\ccomp0104\proyectofinal1\include\poblacion.h
+	<vector>
+	<iostream>
+	<string>
+	<stdlib.h>
+	<fstream>
+	<algorithm>
+
+1594788161 source:c:\users\sebastian paz\ccomp0104\proyectofinal1\src\poblacion.cpp
 	"Poblacion.h"
 	<iostream>
 	<string.h>
-	<stdlib.h>
 	<vector>
+	<algorithm>
 
-1594602694 d:\c++\basecovid-19\include\disponibilidad.h
-	<vector>
-
-1594602694 source:d:\c++\basecovid-19\src\vulnerable.cpp
+1594575960 source:c:\users\sebastian paz\ccomp0104\proyectofinal1\src\vulnerable.cpp
 	"Vulnerable.h"
 	<iostream>
 	<string.h>
 	<fstream>
 	<vector>
 
-1594602694 source:d:\c++\basecovid-19\src\disponibilidad.cpp
+1594576078 c:\users\sebastian paz\ccomp0104\proyectofinal1\include\vulnerable.h
+	"Poblacion.h"
+	<iostream>
+	<string.h>
+	<stdlib.h>
+	<vector>
+
+1594007852 source:c:\users\sebastian paz\ccomp0104\proyectofinal1\src\novulnerable.cpp
+	"NoVulnerable.h"
+	<iostream>
+	<string.h>
+	<vector>
+
+1593920316 c:\users\sebastian paz\ccomp0104\proyectofinal1\include\novulnerable.h
+	"Poblacion.h"
+	<vector>
+	<iostream>
+	<string.h>
+	<stdlib.h>
+	<fstream>
+
+1593921547 source:c:\users\sebastian paz\ccomp0104\proyectofinal1\src\disponibilidad.cpp
 	"Disponibilidad.h"
 	<stdlib.h>
 	<iostream>
 	<vector>
+
+1593522681 c:\users\sebastian paz\ccomp0104\proyectofinal1\include\disponibilidad.h
+	<vector>
+
+1594786546 source:c:\users\sebastian paz\ccomp0104\proyectofinal1\src\mapaaqp.cpp
+	"MapaAQP.h"
+	<allegro.h>
+
+1594786546 c:\users\sebastian paz\ccomp0104\proyectofinal1\include\mapaaqp.h
+
 
