@@ -35,11 +35,13 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Disponibilidad.h" />
+		<Unit filename="include/MapaAQP.h" />
 		<Unit filename="include/NoVulnerable.h" />
 		<Unit filename="include/Poblacion.h" />
 		<Unit filename="include/Vulnerable.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Disponibilidad.cpp" />
+		<Unit filename="src/MapaAQP.cpp" />
 		<Unit filename="src/NoVulnerable.cpp" />
 		<Unit filename="src/Poblacion.cpp" />
 		<Unit filename="src/Vulnerable.cpp" />
